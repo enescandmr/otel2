@@ -1,0 +1,296 @@
+/* =========================================================
+   AKONİ HOTEL — RENK GÜNCELLEMESİ (Siyah / Gri / Antrasit)
+   -----------------------------------------------------------
+   Bu dosya style.css, brown.css ve skin.css dosyalarının HİÇBİRİNİ
+   değiştirmez. Sadece onların üzerine yazar (override).
+
+   NASIL KULLANILIR:
+   1) Bu dosyayı "ANA SAYFA_files" klasörüne kopyala.
+   2) index.html içinde <link href="./ANA SAYFA_files/brown.css">
+      satırının HEMEN ALTINA şu satırı ekle:
+      <link rel="stylesheet" href="./ANA SAYFA_files/custom-colors.css">
+   3) Sıra önemli: bu dosya, style.css / brown.css / skin.css'ten
+      SONRA gelmeli ki üzerlerine yazabilsin.
+========================================================= */
+
+:root{
+    --akoni-black:       #0e0e10;
+    --akoni-black-2:     #17181a;
+    --akoni-anthracite:  #23262b;
+    --akoni-anthracite-2:#2c2f35;
+    --akoni-gray-dark:   #4a4e57;
+    --akoni-gray:        #8a8f98;
+    --akoni-gray-light:  #c9ccd1;
+    --akoni-white:       #f2f2f3;
+}
+
+/* ---------- Genel sayfa zemini ---------- */
+body{
+    background: var(--akoni-black) !important;
+    color: var(--akoni-gray-light) !important;
+}
+.boxed-mode{
+    background: var(--akoni-anthracite) !important;
+}
+h1,h2,h3,h4,h5,h6{
+    color: var(--akoni-white) !important;
+}
+.subheader,
+h1 small, h2 small, h3 small, h4 small, h5 small{
+    color: var(--akoni-gray) !important;
+}
+
+/* ---------- Linkler (eskiden altın/gold #bca474) ---------- */
+a{
+    color: var(--akoni-gray-light) !important;
+}
+a:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* ---------- Üst bar (dil / adres / telefon) ---------- */
+.top-bar-outer-wrapper{
+    background: var(--akoni-black-2) !important;
+    color: var(--akoni-gray) !important;
+}
+.top-bar-outer-wrapper a,
+.top-bar-contact span span,
+.top-bar-contact li span{
+    color: var(--akoni-white) !important;
+}
+.top-nav ul li a:hover{
+    background: var(--akoni-anthracite-2) !important;
+}
+.top-nav ul li ul{
+    background: var(--akoni-black-2) !important;
+}
+.top-bar-right a:hover{
+    color: var(--akoni-gray-light) !important;
+}
+
+/* ---------- Header ---------- */
+.header-outer-wrapper{
+    background: var(--akoni-anthracite) !important;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4) !important;
+}
+.primary-nav ul li a{
+    color: var(--akoni-gray-light) !important;
+    position: relative !important;
+    display: inline-block !important;
+    transform: translateY(0) !important;
+    text-shadow: none !important;
+    transition: transform 0.25s ease, color 0.25s ease, text-shadow 0.25s ease !important;
+}
+.primary-nav ul li a:hover,
+.primary-nav ul li.current-menu-item a{
+    color: var(--akoni-white) !important;
+}
+
+/* Hover'da yazıya hafif sürekli salınım animasyonu */
+@keyframes akoniMenuFloat{
+    0%   { transform: translateY(-4px); }
+    50%  { transform: translateY(-7px); }
+    100% { transform: translateY(-4px); }
+}
+.primary-nav ul li a:hover{
+    transform: translateY(-4px) !important;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.08) !important;
+    animation: akoniMenuFloat 1.4s ease-in-out infinite !important;
+}
+.primary-nav ul li.current-menu-item a{
+    transform: translateY(-2px) !important;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.45) !important;
+}
+
+/* Hover'da açılan altı çizili animasyon */
+.primary-nav ul li a::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    width: 0;
+    height: 2px;
+    background: var(--akoni-gray-light);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+.primary-nav ul li a:hover::after{
+    width: 70%;
+    left: 15%;
+}
+.primary-nav ul li.current-menu-item a::after{
+    width: 70%;
+    left: 15%;
+    background: var(--akoni-white);
+}
+.primary-nav ul li ul{
+    background: rgba(14,14,16,0.92) !important;
+}
+.primary-nav.slideMenu ul li ul li a{
+    color: var(--akoni-gray) !important;
+    border-bottom: 1px solid var(--akoni-anthracite-2) !important;
+}
+.primary-nav.slideMenu ul li ul li a:hover{
+    color: var(--akoni-white) !important;
+}
+#primary-nav-mobile-a{
+    background: var(--akoni-black-2) !important;
+    color: var(--akoni-white) !important;
+}
+#primary-nav-mobile-id{
+    background: var(--akoni-anthracite) !important;
+}
+#primary-nav-mobile-id li a{
+    border-top: 1px solid var(--akoni-anthracite-2) !important;
+    color: var(--akoni-gray-light) !important;
+}
+#primary-nav-mobile-id li ul li a{
+    color: var(--akoni-gray) !important;
+}
+#primary-nav-mobile-id li a:hover,
+#primary-nav-mobile-id li a:active{
+    color: var(--akoni-white) !important;
+    background: var(--akoni-anthracite-2) !important;
+}
+
+/* ---------- Butonlar (REZERVASYON dahil, eski cyan/gold) ---------- */
+.btn,
+.btn_cyan,
+.btn_brown,
+.btn_default{
+    background-color: var(--akoni-anthracite-2) !important;
+    color: var(--akoni-white) !important;
+}
+.btn:hover,
+.btn_cyan:hover,
+.btn_brown:hover,
+.btn_default:hover{
+    background-color: var(--akoni-gray-dark) !important;
+    color: var(--akoni-white) !important;
+}
+input[type="reset"], input[type="submit"], input[type="button"], button{
+    background: var(--akoni-anthracite-2) !important;
+    color: var(--akoni-white) !important;
+}
+
+/* ---------- Ana içerik alanı ---------- */
+.main-outer-wrapper{
+    background: var(--akoni-anthracite) !important;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5) !important;
+}
+.builder-item-wrapper .builder-item-title{
+    color: var(--akoni-gray-light) !important;
+}
+.builder-item-content p,
+.builder-item-content span,
+.builder-item-content li{
+    color: var(--akoni-gray-light) !important;
+}
+.upcoming-events span{
+    color: var(--akoni-gray) !important;
+}
+.upcoming-events .event-title{
+    color: var(--akoni-white) !important;
+}
+.view-all{
+    color: var(--akoni-gray) !important;
+}
+.view-all:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* ---------- Slider alt zemin ---------- */
+.slider-outer-wrapper{
+    background: var(--akoni-black) !important;
+    border-bottom: 1px solid var(--akoni-anthracite) !important;
+}
+
+/* ---------- Slider içi metin kutuları ---------- */
+.ls-s2{
+    background: rgba(14,14,16,0.7) !important;
+}
+.titlebar-title,
+.top-page-flexslider .flex-caption-text{
+    background: rgba(14,14,16,0.75) !important;
+}
+
+/* ---------- Banner kartları (3'lü alt bölüm) ---------- */
+.banner-details{
+    background: rgba(14,14,16,0.8) !important;
+}
+.banner-title{
+    color: var(--akoni-white) !important;
+}
+a.banner-more{
+    color: var(--akoni-gray-light) !important;
+}
+a.banner-more:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* ---------- Abone / bülten formu ---------- */
+.subscribe_section{
+    background: var(--akoni-black-2) !important;
+    border-top: 1px solid var(--akoni-anthracite-2) !important;
+}
+.subscribe_section label{
+    color: var(--akoni-gray-light) !important;
+}
+.subscribe_section .subs_email_input{
+    background: var(--akoni-anthracite) !important;
+    color: var(--akoni-gray-light) !important;
+    border: 1px solid var(--akoni-gray-dark) !important;
+}
+
+/* ---------- Footer ---------- */
+#footer{
+    background: var(--akoni-black) !important;
+}
+footer a{
+    color: var(--akoni-gray) !important;
+}
+#footer a:hover{
+    color: var(--akoni-white) !important;
+}
+.widget-container .footer-widgettitle{
+    color: var(--akoni-white) !important;
+}
+.footer-contact .f-phone span{
+    color: var(--akoni-gray) !important;
+}
+.footer-social li a:hover{
+    background-color: var(--akoni-gray-dark) !important;
+}
+
+/* ---------- Formlar / input alanları ---------- */
+input[type=text], input[type=password], textarea{
+    background: var(--akoni-anthracite) !important;
+    color: var(--akoni-gray-light) !important;
+    border: 1px solid var(--akoni-gray-dark) !important;
+}
+.select-box{
+    background: var(--akoni-anthracite) !important;
+    color: var(--akoni-gray-light) !important;
+}
+
+/* ---------- Slider metin kutusunu ortala (pozisyon düzeltmesi) ----------
+   Not: Bu tek kural renk değil, konum düzeltmesidir. İşaretlediğin kutu
+   sağa kaymıştı çünkü orijinal "left: 463.5px" değeri eski/sabit slider
+   genişliğine göre hesaplanmıştı. Aşağıdaki kural onu ekranın
+   ortasına sabitler ve satır-içi (inline) stili ezer. */
+.ls-layer .ls-s2.ls-s{
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+}
+
+/* ---------- Rezervasyon takvimi (datepicker) ---------- */
+.ui-datepicker-header{
+    background: var(--akoni-black-2) !important;
+}
+.ui-datepicker-calendar .ui-state-hover,
+.ui-datepicker-calendar .ui-state-active{
+    background: var(--akoni-gray-dark) !important;
+    color: var(--akoni-white) !important;
+}
