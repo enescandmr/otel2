@@ -1,0 +1,546 @@
+/* =========================================================
+   Fİ HOTEL — RENK GÜNCELLEMESİ (Siyah / Gri / Antrasit)
+   -----------------------------------------------------------
+   Bu dosya style.css, brown.css ve skin.css dosyalarının HİÇBİRİNİ
+   değiştirmez. Sadece onların üzerine yazar (override).
+
+   NASIL KULLANILIR:
+   1) Bu dosyayı HTML dosyalarının bulunduğu klasöre koy
+      (index.html, about_tr.html vb. ile aynı yere).
+   2) HER sayfada, <link ... brown.css> satırının HEMEN ALTINA
+      şu satırı ekle:
+      <link rel="stylesheet" href="./custom-colors.css">
+   3) Sıra önemli: bu dosya, style.css / brown.css / skin.css'ten
+      SONRA gelmeli ki üzerlerine yazabilsin.
+
+   İÇİNDEKİLER:
+   1. Renk değişkenleri
+   2. Genel zemin, başlıklar, linkler
+   3. Üst bar
+   4. Header ve menü
+   5. Yazı logosu (PNG logo yerine)
+   6. Butonlar
+   7. Ana içerik alanı
+   8. Slider
+   9. Banner kartları
+   10. Abone formu
+   11. Footer
+   12. Form alanları
+   13. Rezervasyon takvimi
+   14. İç sayfalar (titlebar, sayfa başlığı, footer listeleri)
+   15. PNG ikonlar
+========================================================= */
+
+/* =========================================================
+   1. RENK DEĞİŞKENLERİ
+   ========================================================= */
+:root{
+    --akoni-black:       #0e0e10;
+    --akoni-black-2:     #17181a;
+    --akoni-anthracite:  #23262b;
+    --akoni-anthracite-2:#2c2f35;
+    --akoni-gray-dark:   #4a4e57;
+    --akoni-gray:        #8a8f98;
+    --akoni-gray-light:  #c9ccd1;
+    --akoni-white:       #f2f2f3;
+}
+
+/* =========================================================
+   2. GENEL SAYFA ZEMİNİ
+   ========================================================= */
+body{
+    background: var(--akoni-black) !important;
+    color: var(--akoni-gray-light) !important;
+}
+.boxed-mode{
+    background: var(--akoni-anthracite) !important;
+}
+.body-outer-wrapper,
+.body-wrapper,
+.full-width-mode,
+.page-outer-wrapper,
+.page-wrapper{
+    background: transparent !important;
+}
+h1,h2,h3,h4,h5,h6{
+    color: var(--akoni-white) !important;
+}
+.subheader,
+h1 small, h2 small, h3 small, h4 small, h5 small{
+    color: var(--akoni-gray) !important;
+}
+
+/* ---------- Linkler (eskiden altın/gold #bca474) ---------- */
+a{
+    color: var(--akoni-gray-light) !important;
+}
+a:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* ---------- Metin seçimi ---------- */
+::selection{
+    background: var(--akoni-gray-dark);
+    color: var(--akoni-white);
+}
+::-moz-selection{
+    background: var(--akoni-gray-dark);
+    color: var(--akoni-white);
+}
+
+/* =========================================================
+   3. ÜST BAR (dil / adres / telefon)
+   ========================================================= */
+.top-bar-outer-wrapper{
+    background: var(--akoni-black-2) !important;
+    color: var(--akoni-gray) !important;
+}
+.top-bar-outer-wrapper a,
+.top-bar-contact span span,
+.top-bar-contact li span{
+    color: var(--akoni-white) !important;
+}
+.top-nav ul li a:hover{
+    background: var(--akoni-anthracite-2) !important;
+}
+.top-nav ul li ul{
+    background: var(--akoni-black-2) !important;
+}
+.top-bar-right a:hover{
+    color: var(--akoni-gray-light) !important;
+}
+
+/* =========================================================
+   4. HEADER VE MENÜ
+   ========================================================= */
+.header-outer-wrapper{
+    background: var(--akoni-anthracite) !important;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4) !important;
+}
+.primary-nav ul li a{
+    color: var(--akoni-gray-light) !important;
+    position: relative !important;
+    display: inline-block !important;
+    transform: translateY(0) !important;
+    text-shadow: none !important;
+    transition: transform 0.25s ease, color 0.25s ease, text-shadow 0.25s ease !important;
+}
+.primary-nav ul li a:hover,
+.primary-nav ul li.current-menu-item a{
+    color: var(--akoni-white) !important;
+}
+
+/* Hover'da yazıya hafif sürekli salınım animasyonu */
+@keyframes akoniMenuFloat{
+    0%   { transform: translateY(-4px); }
+    50%  { transform: translateY(-7px); }
+    100% { transform: translateY(-4px); }
+}
+.primary-nav ul li a:hover{
+    transform: translateY(-4px) !important;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.08) !important;
+    animation: akoniMenuFloat 1.4s ease-in-out infinite !important;
+}
+.primary-nav ul li.current-menu-item a{
+    transform: translateY(-2px) !important;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.45) !important;
+}
+
+/* Hover'da açılan altı çizili animasyon */
+.primary-nav ul li a::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    width: 0;
+    height: 2px;
+    background: var(--akoni-gray-light);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+.primary-nav ul li a:hover::after{
+    width: 70%;
+    left: 15%;
+}
+.primary-nav ul li.current-menu-item a::after{
+    width: 70%;
+    left: 15%;
+    background: var(--akoni-white);
+}
+.primary-nav ul li ul{
+    background: rgba(14,14,16,0.92) !important;
+}
+.primary-nav.slideMenu ul li ul li a{
+    color: var(--akoni-gray) !important;
+    border-bottom: 1px solid var(--akoni-anthracite-2) !important;
+}
+.primary-nav.slideMenu ul li ul li a:hover{
+    color: var(--akoni-white) !important;
+}
+#primary-nav-mobile-a{
+    background: var(--akoni-black-2) !important;
+    color: var(--akoni-white) !important;
+}
+#primary-nav-mobile-id{
+    background: var(--akoni-anthracite) !important;
+}
+#primary-nav-mobile-id li a{
+    border-top: 1px solid var(--akoni-anthracite-2) !important;
+    color: var(--akoni-gray-light) !important;
+}
+#primary-nav-mobile-id li ul li a{
+    color: var(--akoni-gray) !important;
+}
+#primary-nav-mobile-id li a:hover,
+#primary-nav-mobile-id li a:active{
+    color: var(--akoni-white) !important;
+    background: var(--akoni-anthracite-2) !important;
+}
+
+/* =========================================================
+   5. YAZI LOGOSU (logo.png yerine)
+   -----------------------------------------------------------
+   HTML tarafında logo satırı şu şekilde olmalı:
+   <h1><a href="..." class="text-logo"><span class="tl-mark">Fİ</span><span class="tl-word">Hotel</span></a></h1>
+   Gerçek bir logo görseli hazırlanınca bu bölüm silinebilir.
+   ========================================================= */
+.logo-wrapper h1{
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+.logo-wrapper .text-logo{
+    display: inline-flex !important;
+    align-items: baseline !important;
+    gap: 9px;
+    height: 41px;           /* eski logo yüksekliğiyle aynı */
+    line-height: 41px;
+    white-space: nowrap;
+    text-decoration: none !important;
+}
+.text-logo .tl-mark{
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--akoni-white) !important;
+}
+.text-logo .tl-word{
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--akoni-gray) !important;
+}
+.logo-wrapper .text-logo:hover .tl-word{
+    color: var(--akoni-gray-light) !important;
+}
+@media only screen and (max-width: 767px){
+    .logo-wrapper .text-logo{
+        height: 34px;
+        line-height: 34px;
+        gap: 6px;
+    }
+    .text-logo .tl-mark{ font-size: 24px; }
+    .text-logo .tl-word{ font-size: 12px; letter-spacing: 4px; }
+}
+
+/* ---------- Otel imzası (hotel-sign.jpg yerine) ----------
+   HTML tarafında:
+   <div class="hotel-sign-text">Fi Hotel &amp; Restaurant</div>
+   ---------------------------------------------------------- */
+.hotel-sign-text{
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+    color: var(--akoni-gray-light) !important;
+    margin: 22px 0 6px 0;
+}
+@media only screen and (max-width: 767px){
+    .hotel-sign-text{ font-size: 21px; }
+}
+
+/* =========================================================
+   6. BUTONLAR (REZERVASYON dahil, eski cyan/gold)
+   ========================================================= */
+.btn,
+.btn_cyan,
+.btn_brown,
+.btn_default{
+    background-color: var(--akoni-anthracite-2) !important;
+    color: var(--akoni-white) !important;
+}
+.btn:hover,
+.btn_cyan:hover,
+.btn_brown:hover,
+.btn_default:hover{
+    background-color: var(--akoni-gray-dark) !important;
+    color: var(--akoni-white) !important;
+}
+input[type="reset"], input[type="submit"], input[type="button"], button{
+    background: var(--akoni-anthracite-2) !important;
+    color: var(--akoni-white) !important;
+}
+
+/* =========================================================
+   7. ANA İÇERİK ALANI
+   ========================================================= */
+.main-outer-wrapper,
+.main-outer-wrapper.has-titlebar{
+    background: var(--akoni-anthracite) !important;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5) !important;
+}
+.builder-item-wrapper .builder-item-title{
+    color: var(--akoni-gray-light) !important;
+}
+.builder-item-content p,
+.builder-item-content span,
+.builder-item-content li{
+    color: var(--akoni-gray-light) !important;
+}
+.builder-item-content a{
+    color: var(--akoni-white) !important;
+}
+.builder-item-content a:hover{
+    color: var(--akoni-gray-light) !important;
+}
+.hotel-thumb,
+.builder-item-content img{
+    border-color: var(--akoni-anthracite-2) !important;
+}
+.upcoming-events span{
+    color: var(--akoni-gray) !important;
+}
+.upcoming-events .event-title{
+    color: var(--akoni-white) !important;
+}
+.view-all{
+    color: var(--akoni-gray) !important;
+}
+.view-all:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* =========================================================
+   8. SLIDER
+   ========================================================= */
+.slider-outer-wrapper{
+    background: var(--akoni-black) !important;
+    border-bottom: 1px solid var(--akoni-anthracite) !important;
+}
+
+/* ---------- Slider içi metin kutuları ---------- */
+.ls-s2{
+    background: rgba(14,14,16,0.7) !important;
+}
+.titlebar-title,
+.top-page-flexslider .flex-caption-text{
+    background: rgba(14,14,16,0.75) !important;
+}
+
+/* ---------- Slider metin kutusunu ortala (pozisyon düzeltmesi) ----------
+   Not: Bu tek kural renk değil, konum düzeltmesidir. İşaretlediğin kutu
+   sağa kaymıştı çünkü orijinal "left: 463.5px" değeri eski/sabit slider
+   genişliğine göre hesaplanmıştı. Aşağıdaki kural onu ekranın
+   ortasına sabitler ve satır-içi (inline) stili ezer. */
+.ls-layer .ls-s2.ls-s{
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+    text-align: center !important;
+}
+
+/* ---------- Oda fotoğrafı nokta göstergeleri (flexslider) ---------- */
+.flex-control-paging li a{
+    background: rgba(242,242,243,0.35) !important;
+    box-shadow: none !important;
+}
+.flex-control-paging li a:hover{
+    background: rgba(242,242,243,0.65) !important;
+}
+.flex-control-paging li a.flex-active{
+    background: var(--akoni-white) !important;
+}
+
+/* =========================================================
+   9. BANNER KARTLARI (3'lü alt bölüm)
+   ========================================================= */
+.banner-details{
+    background: rgba(14,14,16,0.8) !important;
+}
+.banner-title{
+    color: var(--akoni-white) !important;
+}
+a.banner-more{
+    color: var(--akoni-gray-light) !important;
+}
+a.banner-more:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* =========================================================
+   10. ABONE / BÜLTEN FORMU
+   ========================================================= */
+.subscribe_section{
+    background: var(--akoni-black-2) !important;
+    border-top: 1px solid var(--akoni-anthracite-2) !important;
+}
+.subscribe_section label{
+    color: var(--akoni-gray-light) !important;
+}
+.subscribe_section .subs_email_input{
+    background: var(--akoni-anthracite) !important;
+    color: var(--akoni-gray-light) !important;
+    border: 1px solid var(--akoni-gray-dark) !important;
+}
+
+/* =========================================================
+   11. FOOTER
+   ========================================================= */
+#footer{
+    background: var(--akoni-black) !important;
+}
+footer a{
+    color: var(--akoni-gray) !important;
+}
+#footer a:hover{
+    color: var(--akoni-white) !important;
+}
+.widget-container .footer-widgettitle{
+    color: var(--akoni-white) !important;
+}
+.footer-contact .f-phone span{
+    color: var(--akoni-gray) !important;
+}
+
+/* ---------- Footer widget listeleri (ODA TİPLERİ, ULAŞIM vb.) ---------- */
+.widget-container .widget-content ul li{
+    border-bottom: 1px solid var(--akoni-anthracite-2) !important;
+}
+.widget-container .widget-content ul li a{
+    color: var(--akoni-gray) !important;
+}
+.widget-container .widget-content ul li a:hover{
+    color: var(--akoni-white) !important;
+}
+.footer-contact ul li{
+    color: var(--akoni-gray) !important;
+}
+.footer-contact .f-mail a{
+    color: var(--akoni-gray-light) !important;
+}
+.footer-contact .f-mail a:hover{
+    color: var(--akoni-white) !important;
+}
+
+/* ---------- Telif / sosyal medya satırı ---------- */
+.footer-copyright{
+    border-top: 1px solid var(--akoni-anthracite-2) !important;
+}
+.footer-copyright,
+.copy-left{
+    color: var(--akoni-gray) !important;
+}
+.footer-social .stay_connected{
+    color: var(--akoni-gray-light) !important;
+}
+/* Sadece background-color veriyoruz — ikon görselini silmemek için
+   kısaca "background" yazmıyoruz. */
+.footer-social li a{
+    background-color: var(--akoni-anthracite-2) !important;
+}
+.footer-social li a:hover{
+    background-color: var(--akoni-gray-dark) !important;
+}
+
+/* =========================================================
+   12. FORM ALANLARI
+   ========================================================= */
+input[type=text], input[type=password], textarea{
+    background: var(--akoni-anthracite) !important;
+    color: var(--akoni-gray-light) !important;
+    border: 1px solid var(--akoni-gray-dark) !important;
+}
+.select-box{
+    background: var(--akoni-anthracite) !important;
+    color: var(--akoni-gray-light) !important;
+}
+
+/* =========================================================
+   13. REZERVASYON TAKVİMİ (datepicker)
+   ========================================================= */
+.ui-datepicker-header{
+    background: var(--akoni-black-2) !important;
+}
+.ui-datepicker-calendar .ui-state-hover,
+.ui-datepicker-calendar .ui-state-active{
+    background: var(--akoni-gray-dark) !important;
+    color: var(--akoni-white) !important;
+}
+
+/* =========================================================
+   14. İÇ SAYFALAR (hakkımızda, odalar, galeri, iletişim...)
+   ========================================================= */
+
+/* ---------- Sayfa başlık şeridi (üstteki fotoğraflı bant) ----------
+   Fotoğraf arka planda kalıyor; üzerine koyu bir tabaka koyup
+   paletle uyumlu hale getiriyoruz. Fotoğrafı daha açık istersen
+   aşağıdaki 0.45 / 0.70 değerlerini düşür. */
+.titlebar-outer-wrapper{
+    position: relative !important;
+    background-color: var(--akoni-black) !important;
+    border-bottom: 1px solid var(--akoni-anthracite-2) !important;
+}
+.titlebar-outer-wrapper::before{
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(180deg,
+                rgba(14,14,16,0.45),
+                rgba(14,14,16,0.70));
+    pointer-events: none;
+    z-index: 1;
+}
+.titlebar-outer-wrapper > .container,
+.titlebar-outer-wrapper .shadow-box{
+    position: relative;
+    z-index: 2;
+}
+.titlebar-title h1{
+    color: var(--akoni-white) !important;
+}
+.titlebar-decs{
+    color: var(--akoni-gray-light) !important;
+}
+
+/* ---------- Sayfa başlığı (OTELİMİZ HAKKINDA vb.) ---------- */
+.page-title-wrapper{
+    border-bottom: 1px solid var(--akoni-anthracite-2) !important;
+}
+.page-title{
+    color: var(--akoni-white) !important;
+}
+.page-title-alt{
+    color: var(--akoni-gray) !important;
+}
+
+/* =========================================================
+   15. ALTIN RENKLİ PNG İKONLAR
+   -----------------------------------------------------------
+   Telefon, harita, mail, takvim ve sosyal medya ikonları PNG
+   olduğu için CSS ile rengi değiştirilemez. grayscale filtresi
+   altın tonunu griye çevirir; zaten gri olan yazılara hiçbir
+   etkisi olmaz. İkon fazla soluk kalırsa brightness(1.25) ekle.
+   ========================================================= */
+.top-bar-contact li,
+.footer-contact ul li,
+.footer-social li a,
+.btn i,
+.top-nav .subDown,
+.primary-nav .subDown{
+    filter: grayscale(1) !important;
+}
+/* Dil bayrağı gri olmasın */
+.iclflag{
+    filter: none !important;
+}
