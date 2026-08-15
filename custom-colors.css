@@ -544,3 +544,108 @@ input[type=text], input[type=password], textarea{
 .iclflag{
     filter: none !important;
 }
+
+/* =========================================================
+   16. MOBİL DÜZELTMELERİ
+   -----------------------------------------------------------
+   Telefonda taşan/bozulan öğeleri hizaya sokar.
+   Slider'ın fotoğrafı kalır, üzerindeki yazı katmanları gizlenir
+   (o katmanlar sabit piksel konumlu olduğu için dar ekranda taşıyor).
+========================================================= */
+
+/* Yatay kaymayı engelle */
+html, body{
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+@media only screen and (max-width: 767px){
+
+    /* --- Slider: alçak bir şerit hâline getir --- */
+    .slider-outer-wrapper{
+        height: 200px !important;
+        overflow: hidden !important;
+    }
+    #layerslider,
+    .ls-container,
+    .ls-inner,
+    .ls-lt-container,
+    .ls-layer,
+    .ls-lt-tile,
+    .ls-curtile,
+    .ls-nexttile{
+        width: 100% !important;
+        height: 200px !important;
+        margin: 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+    .ls-bg,
+    .ls-lt-tile img,
+    .ls-curtile img,
+    .ls-nexttile img{
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+    /* Slider üzerindeki metin katmanları dar ekranda taşıyor — gizle */
+    .ls-layer .ls-s,
+    .ls-layer .ls-s2{
+        display: none !important;
+    }
+    /* Slider ok/nokta düğmeleri */
+    .ls-nav-prev, .ls-nav-next{ display: none !important; }
+
+    /* --- Görsel, harita, tablo taşmasın --- */
+    img, iframe, table, video, object, embed{
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    iframe{ width: 100% !important; }
+
+    /* --- Form alanları --- */
+    /* 16px altındaki yazı iPhone'da odaklanınca sayfayı zorla büyütüyor */
+    input[type=text], input[type=password], input[type=email],
+    input[type=tel], input[type=date], select, textarea{
+        max-width: 100% !important;
+        width: 100% !important;
+        font-size: 16px !important;
+    }
+    .select-box{ max-width: 100% !important; }
+
+    /* --- Dokunma hedefleri --- */
+    #primary-nav-mobile-id li a{
+        padding: 14px 18px !important;
+        display: block !important;
+    }
+    .btn, .btn_cyan, .btn_default,
+    input[type=submit], button{
+        min-height: 46px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* --- Yazı logosu üst üste binmesin --- */
+    .header-right{ clear: none !important; }
+
+    /* --- Sayfa başlık şeridi --- */
+    .titlebar-outer-wrapper{
+        background-size: cover !important;
+        background-position: center !important;
+    }
+    .titlebar-title h1{ font-size: 1.5rem !important; line-height: 1.25 !important; }
+
+    /* --- Abone formu --- */
+    .subscribe_section .subs_email_input{
+        width: 100% !important;
+        margin-bottom: 12px !important;
+    }
+    .subscribe_section label{ display: block !important; margin-bottom: 8px !important; }
+
+    /* --- Footer --- */
+    .footer-social{ display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
+    .copy-left, .copy-social{ float: none !important; width: 100% !important; }
+}
