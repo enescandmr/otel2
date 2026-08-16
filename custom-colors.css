@@ -672,10 +672,14 @@ html, body{
     width: 40px;
     height: 40px;
     border: 1px solid var(--akoni-anthracite-2);
-    color: var(--akoni-gray-light);
     background: transparent;
-    transition: background .25s ease, border-color .25s ease, color .25s ease;
+    transition: background .25s ease, border-color .25s ease, transform .2s ease;
 }
+
+/* Her ikon kendi marka rengiyle */
+.quick-actions .qa-wa{   color: #25D366 !important; }  /* WhatsApp yeşili */
+.quick-actions .qa-call{ color: #3B9DFF !important; }  /* telefon mavisi  */
+.quick-actions .qa-map{  color: #EA4335 !important; }  /* harita kırmızısı */
 .quick-actions .qa svg{
     width: 19px;
     height: 19px;
@@ -685,7 +689,7 @@ html, body{
 .quick-actions .qa:hover{
     background: var(--akoni-anthracite-2);
     border-color: var(--akoni-gray-dark);
-    color: var(--akoni-white) !important;
+    transform: translateY(-2px);
 }
 
 /* Masaüstünde arama ikonu gizli */
