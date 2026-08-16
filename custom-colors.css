@@ -649,3 +649,97 @@ html, body{
     .footer-social{ display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
     .copy-left, .copy-social{ float: none !important; width: 100% !important; }
 }
+
+/* =========================================================
+   17. HIZLI ERİŞİM İKONLARI (WhatsApp / Ara / Konum)
+   -----------------------------------------------------------
+   HTML tarafında .header-right içinde, MENU düğmesinin üstünde
+   duran .quick-actions bloğunu biçimlendirir.
+   Arama ikonu SADECE mobilde görünür (masaüstünde tel: çalışmaz).
+========================================================= */
+
+.quick-actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    float: right;
+    margin: 22px 0 0 18px;
+}
+.quick-actions .qa{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--akoni-anthracite-2);
+    color: var(--akoni-gray-light);
+    background: transparent;
+    transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.quick-actions .qa svg{
+    width: 19px;
+    height: 19px;
+    fill: currentColor;
+    display: block;
+}
+.quick-actions .qa:hover{
+    background: var(--akoni-anthracite-2);
+    border-color: var(--akoni-gray-dark);
+    color: var(--akoni-white) !important;
+}
+
+/* Masaüstünde arama ikonu gizli */
+.quick-actions .qa-call{ display: none; }
+
+/* Üst bardaki kısa şehir satırı sadece mobilde */
+.top-bar-city{ display: none !important; }
+
+@media only screen and (max-width: 767px){
+
+    /* Uzun adres gizli, kısa şehir satırı görünür */
+    .top-bar-address{ display: none !important; }
+    .top-bar-city{
+        display: block !important;
+        text-align: center !important;
+        padding: 2px 0 !important;
+    }
+    .top-bar-city a{
+        color: var(--akoni-gray-light) !important;
+        letter-spacing: .04em;
+    }
+    /* Üst bar mobilde tümüyle görünsün ve ortalansın */
+    .top-bar-right{
+        display: block !important;
+        float: none !important;
+        width: 100% !important;
+    }
+    .top-bar-contact{
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .top-bar-contact li{
+        float: none !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 2px 0 !important;
+    }
+
+    /* İkonlar logo ile MENU arasında, ortada */
+    .quick-actions{
+        float: none !important;
+        justify-content: center !important;
+        margin: 14px 0 16px !important;
+        gap: 14px !important;
+    }
+    .quick-actions .qa{
+        width: 46px !important;
+        height: 46px !important;
+    }
+    .quick-actions .qa svg{
+        width: 21px !important;
+        height: 21px !important;
+    }
+    /* Mobilde arama ikonu görünür */
+    .quick-actions .qa-call{ display: inline-flex !important; }
+}
